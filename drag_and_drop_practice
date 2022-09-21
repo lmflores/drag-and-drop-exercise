@@ -1,0 +1,17 @@
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+import time
+
+driver = webdriver.Chrome(executable_path=r"C:\Users\luism\OneDrive\Documentos\AA Trabajos 7to Parcial 22_2\Prueba Aseg Calidad Soft\ChromeDriver\chromedriver.exe")
+driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html")
+
+time.sleep(5)
+driver.maximize_window()
+action = ActionChains(driver)
+
+for number_box in range(1,8):
+    source=driver.find_element(By.ID, "box"+str(number_box))
+    target=driver.find_element(By.ID, "box10"+str(number_box))
+    action.drag_and_drop(source, target).perform()
+    time.sleep(2)
